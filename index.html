@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="character animation, humanoid, human-object interaction, reinforcement learning, manipulation, basketball">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Dexterous Manipulation Primitives without Human Demonstrations</title>
+  <link rel="icon" href="static/images/hand_icon.png" type="image/svg+xml">
+
+   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="https://kit.fontawesome.com/d383128d10.js" crossorigin="anonymous"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js",
+        "three": "https://unpkg.com/three@0.127.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.127.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KC36P9N5PB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KC36P9N5PB');
+</script>
+
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><img src="static/images/hand_icon.png" style="height: 60px; margin-bottom: -3px;">Learning Generalizable Hand-Object Tracking from Synthetic Demonstrations</h1>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Teaser -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- <h2 class="title is-3"><span class="dnerf">AnySkill</span> model</h2> -->
+          <div class="content has-text-justified">
+            <img src="./static/images/page_teaser.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End teaser -->
+
+
+<!-- Paper abstract -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We present a framework for learning versatile dexterous manipulation directly from synthetic data, relaxing the traditional dependency on human demonstrations. 
+            </p>
+            <p>
+              Our approach makes two key contributions: (1) a systematic decomposition of manipulation into foundational meta-skills, coupled with ManiSynth—an efficient pipeline generating diverse synthetic demonstrations from programmatically created grasp configurations; 
+              and (2) HOT—a Hand-Object Tracking imitation framework that bridges synthetic-to-physical transfer through reinforcement learning, delivering a generalizable controller conditioned on target hand-object states.
+            </p>
+            <p>
+              Our method demonstrates remarkable versatility across diverse object categories and hand morphologies without requiring any real-world demonstration data. 
+              Through extensive evaluations, we show that our approach enables dexterous hands to execute challenging, long-horizon tasks including dynamic throwing, reactive catching, and agile in-hand reorientation. 
+              These results represent a significant step toward scalable foundation controllers for manipulation that can learn entirely from synthetic data, breaking the demonstration bottleneck that has historically constrained progress in dexterous manipulation. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Poster -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method Overview</h2>
+          <img src="./static/images/page_framework.png"/>
+          <div class="content has-text-justified">
+            <p>
+            We propose a novel system for generalizable hand-object tracking purely from synthetic demonstrations. 
+            (1): We propose ManiSynth, a scalable framework that procedurally synthesizes meta-skill demonstrations of dexterous manipulations. 
+            (2): Leveraging these synthetic data, we train a Hand-Object Tracker (HOT) using reinforcement learning with unified HOI imitation reward. 
+            (3): During inference, HOT can track long-horizon, complex, and dynamic manipulation sequences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End poster -->
+
+<!-- Poster -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">ManiSynth Pipeline</h2>
+          <img src="./static/images/page_pipeline.png"/>
+          <div class="content has-text-justified">
+            <p>
+            Given a dexterous hand and an object, ManiSynth automatically synthesizes demonstrations for eight meta tasks of dexterous manipulations. 
+            The pipeline first generates diverse grasp configurations by optimizing force-closure conditions. 
+            These grasps configurations are then systematically transformed, stitched, or interpolated according to task-specific kinematic rules.
+            Our method generalizes across different hand morphologies and object geometries, enabling full coverage of the manipulation space with scalability. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End poster -->
+
+<!-- Small video carousel -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <h2 class="title is-2" style="text-align: center;"> Tracking Long Sequences </h2>
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel" style="text-align: center;">
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> Hammer Hitting </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo_hammer_hitting.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> Sword Playing </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo_sword_playing.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> Bottle Arranging </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo_bottle_arranging.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> Box Manipulation </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo_box_manipulate.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Data / Learning  -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;"> Synthetic Data / Tracking Results </h2>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Grasp </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_move.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Move </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_place.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Place </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_throw.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Throw </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_catch.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Catch </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_1.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Rotate - Simple </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Rotate - Hard </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Regrasp - Simple </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Regrasp - Hard </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Robustness  -->
+
+<script src="./animate.js" type="module"></script>
+
+
+</body>
+</html>
