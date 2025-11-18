@@ -101,16 +101,17 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We present a framework for learning versatile dexterous manipulation directly from synthetic data, relaxing the traditional dependency on human demonstrations. 
+              We present a system for learning generalizable hand-object tracking controllers purely from synthetic data, without requiring any human demonstrations. 
             </p>
             <p>
-              Our approach makes two key contributions: (1) a systematic decomposition of manipulation into foundational meta-skills, coupled with ManiSynth—an efficient pipeline generating diverse synthetic demonstrations from programmatically created grasp configurations; 
-              and (2) HOT—a Hand-Object Tracking imitation framework that bridges synthetic-to-physical transfer through reinforcement learning, delivering a generalizable controller conditioned on target hand-object states.
+              Our approach makes two key contributions: 
+              (1) HOP, a Hand-Object Planner, which can synthesize diverse hand-object trajectories; 
+              and (2) HOT, a Hand-Object Tracker that bridges synthetic-to-physical transfer through reinforcement learning and interaction imitation learning, delivering a generalizable controller conditioned on target hand-object states.
             </p>
             <p>
-              Our method demonstrates remarkable versatility across diverse object categories and hand morphologies without requiring any real-world demonstration data. 
-              Through extensive evaluations, we show that our approach enables dexterous hands to execute challenging, long-horizon tasks including dynamic throwing, reactive catching, and agile in-hand reorientation. 
-              These results represent a significant step toward scalable foundation controllers for manipulation that can learn entirely from synthetic data, breaking the demonstration bottleneck that has historically constrained progress in dexterous manipulation. 
+              Our method extends to diverse object shapes and hand morphologies. 
+              Through extensive evaluations, we show that our approach enables dexterous hands to track challenging, long-horizon sequences including object re-arrangement and agile in-hand reorientation. 
+              These results represent a significant step toward scalable foundation controllers for manipulation that can learn entirely from synthetic data, breaking the data bottleneck that has long constrained progress in dexterous manipulation. 
             </p>
           </div>
         </div>
@@ -130,11 +131,11 @@
           <img src="./static/images/page_framework.png"/>
           <div class="content has-text-justified">
             <p>
-            We propose a novel system for generalizable hand-object tracking purely from synthetic demonstrations. 
-            (1): We propose ManiSynth, a scalable framework that procedurally synthesizes meta-skill demonstrations of dexterous manipulations. 
-            (2): Leveraging these synthetic data, we train a Hand-Object Tracker (HOT) using reinforcement learning with unified HOI imitation reward. 
-            (3): During inference, HOT can track long-horizon, complex, and dynamic manipulation sequences.
-            </p>
+            Our system learns generalizable hand-object tracking from synthetic data. 
+            <b>(a) HOP</b> synthesizes manipulation trajectories for meta-skills. 
+            <b>(b) HOT</b> is trained through a two-stage teacher-student framework using reinforcement learning with a unified HOI imitation reward, enabling robust tracking of the target HOI trajectories. 
+            <b>(c) At inference</b>, the system can accept high-level waypoints from language models, generative models, or human data, which HOP converts into trajectories for HOT to track, enabling diverse applications.
+          </p>
           </div>
         </div>
       </div>
@@ -149,14 +150,13 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">ManiSynth Pipeline</h2>
+          <h2 class="title is-3">HOP Pipeline</h2>
           <img src="./static/images/page_pipeline.png"/>
           <div class="content has-text-justified">
             <p>
-            Given a dexterous hand and an object, ManiSynth automatically synthesizes demonstrations for eight meta tasks of dexterous manipulations. 
-            The pipeline first generates diverse grasp configurations by optimizing force-closure conditions. 
-            These grasps configurations are then systematically transformed, stitched, or interpolated according to task-specific kinematic rules.
-            Our method generalizes across different hand morphologies and object geometries, enabling full coverage of the manipulation space with scalability. 
+            HOP synthesizes manipulation trajectories from grasp poses generated by force-closure optimization and refined by RL. 
+            Its grammar-based approach supports eight composable meta-skills, offering multi-source parameter control via randomization, LLM/VLM instructions, or from human demonstrations. 
+            The system naturally generalizes across diverse hands and objects for scalable data coverage.
             </p>
           </div>
         </div>
@@ -166,7 +166,65 @@
 </section>
 <!-- End poster -->
 
-<!-- Small video carousel -->
+<!-- Part1: Meta Skills  -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;"> HOP Meta Skill / HOT Tracking Results </h2>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> FreeMove </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Move </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Grasp </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Place </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_throw.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Throw </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_catch.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Catch </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Rotate - Simple </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_1.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Rotate - Hard </p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Regrasp - Simple </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Regrasp - Hard </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Robustness  -->
+
+<!-- Part2: Tracking Long Sequences -->
 <section class="hero is-light is-small">
   <div class="hero-body">
     <h2 class="title is-2" style="text-align: center;"> Tracking Long Sequences </h2>
@@ -208,55 +266,83 @@
 </div>
 </section>
 
-<!-- Data / Learning  -->
+<!-- Part3 VLM Planning -->
 <section class="section">
   <div class="container">
-    <h2 class="title is-2" style="text-align: center;"> Synthetic Data / Tracking Results </h2>
+    <h2 class="title is-2" style="text-align: center;"> VLM Planning + Our Method </h2>
     <div class="columns is-centered">
       <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Grasp </p>
+        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Place the bottles into the basket </p>
       </div>
       <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_move.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Move </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_place.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Place </p>
-      </div>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_throw.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Throw </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_catch.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Catch </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_1.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Rotate - Simple </p>
-      </div>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Rotate - Hard </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Regrasp - Simple </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Regrasp - Hard </p>
+        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Place the elephant on the grassland </p>
       </div>
     </div>
   </div>
 </section>
-<!-- End Robustness  -->
+
+
+<!-- Part4 Grab Motion Tracking -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <h2 class="title is-2" style="text-align: center;"> Grab Motion Tracking Results </h2>
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel" style="text-align: center;">
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> Grasp Apple </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo_hammer_hitting.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> Hammer Hit </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/x.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> [Text2HOI] Shake the water bottle quickly </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/x.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!--  -->
+        <div class="publication-banner video">
+          <div class="video-caption" style="margin-bottom: 10px;"> [Text2HOI] xxx </div>
+          <video poster="" id="jumpshot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/x.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+  </div>
+
+<!-- Part5 Other hand Tracking Results -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2" style="text-align: center;"> Other Hands </h2>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Shadow Hand </p>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Allegro Hand </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+</section>
 
 <script src="./animate.js" type="module"></script>
 
