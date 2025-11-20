@@ -39,6 +39,39 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <style>
+    /* 自定义样式：确保在移动端也能自动换行，保持居中 */
+    .custom-video-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end; /* 底部对齐，这样文字标签会在一条线上 */
+      gap: 10px; /* 视频之间的间距 */
+    }
+
+    .custom-video-column {
+      /* 移除 Bulma 的默认 padding，或者根据需要保留 */
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .unified-height-video {
+      height: 300px; /* 【在这里修改】你可以将 200px 改为你想要的任何高度 */
+      width: auto;   /* 宽度自动计算 */
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      object-fit: contain; /* 确保视频内容完整显示 */
+      display: block; /* 消除 inline 元素的底部间隙 */
+      margin-bottom: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .unified-height-video {
+        height: 150px; /* 移动端高度稍微小一点 */
+        max-width: 100%; /* 防止视频宽过屏幕 */
+      }
+    }
+  </style>
 
   <script type="importmap">
     {
@@ -170,56 +203,54 @@
 <section class="section">
   <div class="container">
     <h2 class="title is-2" style="text-align: center;"> HOP Meta Skill / HOT Tracking Results </h2>
-    <div class="columns is-centered">
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> FreeMove </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Move </p>
-      </div>
-    </div>
-    <div class="columns is-centered">
+    <div class="columns is-centered" >
       <div class="column is-one-fifths is-centered has-text-centered">
         <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
         <p> Grasp </p>
       </div>
       <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_grasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_place.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
         <p> Place </p>
       </div>
-    </div>
-    <div class="columns is-centered">
       <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_throw.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Throw </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_catch.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Catch </p>
+        <video controls autoplay loop muted playsinline src="./static/videos/part1_sword_move.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <p> Move </p>
       </div>
     </div>
-    <div class="columns is-centered">
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Rotate - Simple </p>
+    <!-- 修改后的结构 -->
+      <div class="custom-video-row">
+        <!-- Video 1 -->
+        <div class="custom-video-column">
+          <video 
+            class="unified-height-video"
+            controls autoplay loop muted playsinline 
+            src="./static/videos/part1_bottle_throw.mp4" 
+            poster="./static/loading-icon.gif">
+          </video>
+          <p>Throw</p>
+        </div>
+        <!-- Video 2 -->
+        <div class="custom-video-column">
+          <video class="unified-height-video" controls autoplay loop muted playsinline 
+            src="./static/videos/part1_sword_catch.mp4" poster="./static/loading-icon.gif">
+          </video>
+          <p>Catch</p>
+        </div>
+        <!-- Video 3 -->
+        <div class="custom-video-column">
+          <video class="unified-height-video" controls autoplay loop muted playsinline 
+            src="./static/videos/part1_bottle_rotate.mp4" poster="./static/loading-icon.gif">
+          </video>
+          <p>Rotate</p>
+        </div>
+        <!-- Video 4 -->
+        <div class="custom-video-column">
+          <video class="unified-height-video" controls autoplay loop muted playsinline 
+            src="./static/videos/part1_bottle_regrasp.mp4" poster="./static/loading-icon.gif">
+          </video>
+          <p>Regrasp</p>
+        </div>
       </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_rotate_1.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Rotate - Hard </p>
-      </div>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp_2.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Regrasp - Simple </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part2_regrasp.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Regrasp - Hard </p>
-      </div>
-    </div>
   </div>
 </section>
 <!-- End Robustness  -->
@@ -271,13 +302,9 @@
   <div class="container">
     <h2 class="title is-2" style="text-align: center;"> VLM Planning + Our Method </h2>
     <div class="columns is-centered">
-      <div class="column is-one-fifths is-centered has-text-centered">
+      <div class="column is-three-quarters is-centered has-text-centered">
         <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
         <p> Place the bottles into the basket </p>
-      </div>
-      <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Place the elephant on the grassland </p>
       </div>
     </div>
   </div>
@@ -329,12 +356,14 @@
     <h2 class="title is-2" style="text-align: center;"> Other Hands </h2>
     <div class="columns is-centered">
       <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Shadow Hand </p>
+        <p style="font-size: 25px;"> Shadow Hand </p>
+        <video controls autoplay loop muted playsinline src="./static/videos/part5_shadow.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
+    </div>
+    <div class="columns is-centered">
       <div class="column is-one-fifths is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./static/videos/part3_video_vlm_bottle.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
-        <p> Allegro Hand </p>
+        <p style="font-size: 25px;"> Allegro Hand </p>
+        <video controls autoplay loop muted playsinline src="./static/videos/part5_allegro.mp4" poster="./static/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
   </div>
