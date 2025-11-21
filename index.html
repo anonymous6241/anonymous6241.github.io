@@ -15,10 +15,9 @@
   <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
   <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
   <meta name="keywords" content="character animation, humanoid, human-object interaction, reinforcement learning, manipulation, basketball">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Learning Dexterous Manipulation Primitives without Human Demonstrations</title>
+  <title>Learning Generalizable Hand-Object Tracking from Synthetic Demonstrations</title>
   <link rel="icon" href="static/images/hand_icon.png" type="image/svg+xml">
 
    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -40,35 +39,33 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
   <style>
-    /* 自定义样式：确保在移动端也能自动换行，保持居中 */
     .custom-video-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: flex-end; /* 底部对齐，这样文字标签会在一条线上 */
-      gap: 10px; /* 视频之间的间距 */
+      align-items: flex-end; 
+      gap: 10px;
     }
 
     .custom-video-column {
-      /* 移除 Bulma 的默认 padding，或者根据需要保留 */
       padding: 0.75rem;
       text-align: center;
     }
 
     .unified-height-video {
-      height: 300px; /* 【在这里修改】你可以将 200px 改为你想要的任何高度 */
-      width: auto;   /* 宽度自动计算 */
+      height: 300px;
+      width: auto; 
       border: 1px solid #bbb;
       border-radius: 10px;
-      object-fit: contain; /* 确保视频内容完整显示 */
-      display: block; /* 消除 inline 元素的底部间隙 */
+      object-fit: contain;
+      display: block;
       margin-bottom: 5px;
     }
 
     @media screen and (max-width: 768px) {
       .unified-height-video {
-        height: 150px; /* 移动端高度稍微小一点 */
-        max-width: 100%; /* 防止视频宽过屏幕 */
+        height: 150px;
+        max-width: 100%;
       }
     }
   </style>
@@ -113,7 +110,6 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <!-- <h2 class="title is-3"><span class="dnerf">AnySkill</span> model</h2> -->
           <div class="content has-text-justified">
             <img src="./static/images/page_teaser.png"/>
           </div>
